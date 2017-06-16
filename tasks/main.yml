@@ -1,4 +1,9 @@
 ---
+- name: install sudo on docker hosts
+  yum:
+    name: sudo
+  when: ansible_connection == 'docker'
+  
 - name: resolve platform specific vars
   include_vars: "{{item}}"
   with_first_found:
